@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand img">
+                <img width="50" height="50" src="~/images/photo.png" alt="Alternate Text" />
+            </a>
+        </div>
+        <div class="navbar-collapse collapse mt-4">
+            <ul class="nav navbar-nav">
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="Recipes" asp-action="Index">Recipes</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contests">Contests</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Announcements">Announcements</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Feedback">Feedback</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ's</a></li>
+
+            </ul>
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+<link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
+<div class="imagebg"></div>
+<div class="row " style="margin-top: 50px">
+    <div class="col-md-6 col-md-offset-3 form-container">
+        <h2>Feedback</h2>
+        <p>
+            Please provide your feedback below:
+        </p>
+        <form role="form" method="post" id="reused_form">
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label>How do you rate your overall experience?</label>
+                    <p>
+                        <label class="radio-inline">
+                            <input type="radio" name="experience" id="radio_experience" value="bad">
+                            Bad
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="experience" id="radio_experience" value="average">
+                            Average
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="experience" id="radio_experience" value="good">
+                            Good
+                        </label>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label for="comments">
+                        Comments:
+                    </label>
+                    <textarea class="form-control" type="textarea" name="comments" id="comments" placeholder="Your Comments" maxlength="6000" rows="7"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label for="name">
+                        Your Name:
+                    </label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="email">
+                        Email:
+                    </label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button id="b1" type="submit" class="btn btn-lg btn-warning btn-block">Post </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<script type="text/javascript">document.getElementById('b1').onclick  function () {
+        swal("Feedback Success!", "", "success");
+    };</script>

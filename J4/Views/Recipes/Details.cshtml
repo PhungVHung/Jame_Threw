@@ -1,0 +1,638 @@
+﻿@model J4.Models.Recipes
+@using Microsoft.AspNetCore.Identity
+
+@{
+    ViewData["Title"] = "Details";
+}
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<style>
+    .border {
+        border: 1px solid #f1f1f1;
+        border-radius: 5px;
+        padding: 10px 5px;
+        background-color: #fff;
+    }
+
+    .name-recipes {
+        text-align: center;
+    }
+
+    .recipe-navbar {
+        overflow: hidden;
+        clear: both;
+        margin: 15px 0;
+    }
+
+        .recipe-navbar .nav {
+            border: .5px solid #ddd;
+            background-color: #fff;
+            font-size: 16px;
+            margin-left: 30px;
+            overflow: hidden;
+        }
+
+        .recipe-navbar li {
+            display: block;
+            float: left;
+            overflow: hidden;
+        }
+
+            .recipe-navbar li a {
+                display: block;
+                padding: 20px 90px;
+                font-weight: bold;
+                color: #000;
+            }
+
+    .cmt {
+        border: 5px solid #ddd;
+        background-color: #fff;
+        font-size: 16px;
+        border-radius: 16px;
+        float: left;
+        margin: 15px 10px;
+        padding: 20px 90px;
+    }
+
+    .Recipe {
+        padding: 25px 0;
+    }
+
+    .abc1 {
+        padding: 30px;
+        padding-right: 10px;
+        border: 3px solid black;
+        border-radius: 13px;
+    }
+
+    .item-wrapper {
+        width: 50%;
+        float: left;
+    }
+
+    .related-recipe-box .headline {
+        padding: 0 0 10px 0;
+        text-align: center;
+        border-bottom: .5px solid #eee;
+    }
+
+        .related-recipe-box .headline h3 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+    .related-recipe-list {
+        padding: 5px;
+    }
+
+    .row {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .related-recipe-list .item-wrapper {
+        width: 50%;
+        float: left;
+    }
+
+    .related-recipe-list .item {
+        padding: 10px;
+        clear: both;
+        overflow: hidden;
+    }
+
+        .related-recipe-list .item .photo {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+    a {
+        color: #333;
+        white-space: nowrap;
+    }
+
+    .img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .related-recipe-list .item .info {
+        padding: 5px 0;
+        overflow: hidden;
+    }
+
+    .related-recipe-list .item-wrapper {
+        width: 50%;
+        float: left;
+    }
+
+    .h1-role {
+        color: crimson;
+        text-align:center;
+    }
+
+   
+
+        .role1 h1 {
+            text-shadow: 2px 2px 2px #cc0000;
+            text-align:center
+        }
+
+    .resources h1 {
+        text-indent: 15px;
+    }
+
+    .resources p {
+        text-indent: 30px;
+    }
+
+    .Recipe1 h1 {
+        text-indent: 15px;
+    }
+
+    .Recipe1 p {
+        text-indent: 30px;
+        letter-spacing: 0.5px;
+        line-height: 2em;
+    }
+
+    .role {
+      
+    }
+    .role h1{
+        text-align:center;
+        color:red;
+    }
+
+    .post-photo {
+        border-bottom: 2px solid #edecec;
+        border-radius: 0;
+    }
+
+        .post-photo h3 {
+            text-indent: 15px;
+            font-weight: bold;
+        }
+
+        .post-photo p {
+            text-indent: 30px;
+            letter-spacing: 0.5px;
+            line-height: 2em;
+        }
+
+    .center {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+        .center img {
+            width: 120px;
+        }
+
+    .cooked-container .btn-add-photo, .practiced-members-box .btn-add-photo {
+        background-color: #fff;
+        border-radius: 16px;
+        color: #ff4f4f;
+        border: .5px solid #ff4f4f;
+        padding: 10px 30px;
+        width: 300px;
+        font-size: 16px;
+    }
+
+    .up-photo {
+        width: 140px;
+        padding: 10px 10px;
+    }
+
+    .up-photo1 {
+        padding: 10px 10px;
+    }
+
+    .border2 {
+        border: 2px solid #f1f1f1;
+        border-radius: 12px;
+    }
+
+    .border-image {
+        border: 2px solid #f1f1f1;
+        border-radius: 30px;
+    }
+    .b12 {
+        color: #e82541;
+    }
+    .image-wrapper {
+        margin: 0 auto;
+        width:135px;
+        overflow: hidden;
+
+    }
+
+        .image-wrapper img {
+            max-width: 100%;
+            transition: transform 1s ease-in-out;
+        }
+
+    .image-wrapper:hover img {
+        transform: scale(1.4);
+    }
+    .image-wrapper1 {
+        margin: 0 auto;
+        width: 250px;
+        overflow: hidden;
+    }
+
+        .image-wrapper1 img {
+            max-width: 100%;
+            transition: transform 1s ease-in-out;
+        }
+
+        .image-wrapper1:hover img {
+            transform: scale(1.4);
+        }
+    .image-wrapper2 {
+        margin: 0 auto;
+        width: 16.66%;
+        overflow: hidden;
+    }
+
+        .image-wrapper2 img {
+            max-width: 100%;
+            transition: transform 1s ease-in-out;
+        }
+
+        .image-wrapper2:hover img {
+            transform: scale(1.4);
+        }
+   
+</style>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">J4</a>
+           
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="Recipes" asp-action="Index">Recipes</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contests">Contests</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Announcements">Announcements</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Feedback">Feedback</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ's</a></li>
+
+            </ul>
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+
+<div class="container border2">
+    <div class="row mt-3">
+        <div class="col-sm-9">
+            <div class="name-recipes">
+
+                <img src="@Html.DisplayFor(model => model.Image_Food)" />
+            </div>
+            <div class="name-recipes">
+
+                <h2><b>  @Html.DisplayFor(model => model.Name_Food)</b></h2>
+            </div>
+            <div class="role">
+               
+                
+                    <h1>  @Html.DisplayFor(model => model.role)</h1>
+            
+            </div>
+        </div>
+
+        <div class="col-sm-3 border">
+            <div style="border-bottom:2px solid #fff;">
+                <h2 style="text-align:center"><b>Món ăn liên quan</b></h2>
+                <hr />
+            </div>
+
+            <div class="col-md-6 border">
+                <div class="image-wrapper">
+                    <img style="width:135px; height:135px;" src="@Html.DisplayFor(model => model.Image_Practice3)" alt="Alternate Text" />
+                </div>
+                <div class="">
+                    <p style="text-align:center">@Html.DisplayFor(model => model.Name_Food)</p>
+                </div>
+
+
+            </div>
+            <div class="col-md-6 border">
+                <div class="image-wrapper">
+                    <img style="width:135px; height:135px;" src="@Html.DisplayFor(model => model.Image_Practice)" alt="Alternate Text" />
+                </div>
+                <div class="">
+                    <p style="text-align:center">@Html.DisplayFor(model => model.Name_Food)</p>
+                    </div>
+
+                </div>
+            <div class="col-md-6 border mt-4">
+                <div class="image-wrapper">
+                    <img style="width:135px; height:135px;" src="@Html.DisplayFor(model => model.Image_Practice3)" alt="Alternate Text" />
+                    </div>
+                <div>
+                    <p style="text-align:center">@Html.DisplayFor(model => model.Name_Food)</p>
+
+                </div>
+                </div>
+            <div class="col-md-6 border mt-4">
+                <div class="image-wrapper">
+
+                    <img style="width:135px; height:135px;" src="@Html.DisplayFor(model => model.Image_Practice)" alt="Alternate Text" />
+                    </div>
+                <div>
+
+                    <p style="text-align:center">@Html.DisplayFor(model => model.Name_Food)</p>
+                </div>
+                </div>
+
+
+
+            </div>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-sm-9">
+        <div class="recipe-navbar">
+            <ul class="ist-inline nav">
+                <li class="active"><a href="#congthuc" target="_self">Công thức</a></li>
+                <li class="active"><a href="#binhluan" >Bình luận</a></li>
+                <li class="active"><a href="#hinhthuchanh">Hình thức hiện</a></li>
+            </ul>
+
+        </div>
+
+
+    </div>
+    <div class="container">
+        <div class="row mt-3 up-photo2">
+            <div class="col-sm-9 border ">
+                <div class="col-sm-2 border up-photo image-wrapper2">
+                    <img src="@Html.DisplayFor(model => model.Image_Practice)" alt="Alternate Text" />
+                </div>
+                <div class="col-sm-2 border up-photo image-wrapper2">
+                    <img src="@Html.DisplayFor(model => model.Image_Practice3)" alt="Alternate Text" />
+                </div>
+                <div class="col-sm-2 border up-photo image-wrapper2">
+                    <img src="@Html.DisplayFor(model => model.Recipe_image4)" alt="Alternate Text" />
+                </div>
+                <div class="col-sm-2 border up-photo image-wrapper2">
+                    <img src="@Html.DisplayFor(model => model.Recipe_image4)" alt="Alternate Text" />
+                </div>
+                <div class="col-sm-2 border up-photo image-wrapper2">
+                    <img src="@Html.DisplayFor(model => model.Recipe_image6)" alt="Alternate Text" />
+                </div>
+                <div class="col-sm-2 border up-photo image-wrapper2">
+                    <img src="@Html.DisplayFor(model => model.Recipe_image1)" alt="Alternate Text" />
+                </div>
+                <center style="font-weight:bold; font-size:16px">Hình ảnh thực hiện</center>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container border2">
+        <div class="row mt-3">
+            <div class="col-sm-9 border">
+                <div class="resources">
+
+                    <h1 id="congthuc" style="text-align:center; color:#e55066"> Resources prepare </h1>
+                    <ol>
+                        <h3><b>Include:</b>@Html.DisplayFor(model => model.Resources_prepare)</h3>
+                        <li>@Html.DisplayFor(model => model.Resources1)</li>
+                        <li>@Html.DisplayFor(model => model.Resources2)</li>
+                        <li>@Html.DisplayFor(model => model.Resources3)</li>
+                        <li>@Html.DisplayFor(model => model.Resources4)</li>
+                        <li>@Html.DisplayFor(model => model.Resources5)</li>
+                        <li>@Html.DisplayFor(model => model.Resources6)</li>
+                        <li>@Html.DisplayFor(model => model.Resources7)</li>
+                    </ol>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="container border2">
+        <div class="row mt-3">
+            <div class="col-sm-9 border">
+                <div class="Recipe1">
+                    <h1 id="recipe" style="text-align:center; color:#e55066">Recipe</h1>
+                    <ul>
+                        <h1 class="b12"> @Html.DisplayNameFor(model => model.Step1)</h1>
+                        <li>
+                            @Html.DisplayFor(model => model.Step1)
+                            <div class="row">
+                                <div class="col-md-5  mt-4">
+
+                                    <img style="width:500px; height:500px;" src="@Html.DisplayFor(model => model.Recipe_image1)" alt="Alternate Text" />
+
+
+
+                                </div>
+
+                            </div>
+
+                        </li>
+
+                        <h1 class="b12"> @Html.DisplayNameFor(model => model.Step2)</h1>
+                        <li>
+                            @Html.DisplayFor(model => model.Step2)
+                            <div class="row">
+                                <div class="col-md-5  mt-4">
+
+                                    <img style="width:500px; height:500px;" src="@Html.DisplayFor(model => model.Recipe_image2)" alt="Alternate Text" />
+
+
+
+                                </div>
+
+                            </div>
+                        </li>
+                        <h1 class="b12"> @Html.DisplayNameFor(model => model.Step3)</h1>
+                        <li>
+                            @Html.DisplayFor(model => model.Step3)
+
+                            <div class="row">
+                                <div class="col-md-5  mt-4">
+
+                                    <img style="width:500px; height:500px;" src="@Html.DisplayFor(model => model.Recipe_image3)" alt="Alternate Text" />
+
+
+
+                                </div>
+
+                            </div>
+                        </li>
+                        <h1 class="b12"> @Html.DisplayNameFor(model => model.Step4)</h1>
+                        <li>
+                            @Html.DisplayFor(model => model.Step4)
+                            <div>
+
+                                <img style="width:500px; height:500px;" src="@Html.DisplayFor(model => model.Recipe_image4)" alt="Alternate Text" />
+
+
+
+                            </div>
+
+                        </li>
+                        <h1 class="b12"> @Html.DisplayNameFor(model => model.Step5)</h1>
+                        <li>
+                            @Html.DisplayFor(model => model.Step5)
+                            <div>
+
+                                <img style="width:500px; height:500px;" src="@Html.DisplayFor(model => model.Recipe_image5)" alt="Alternate Text" />
+
+
+
+                            </div>
+
+                        </li>
+                        <h1 class="b12"> @Html.DisplayNameFor(model => model.Step6)</h1>
+                        <li>
+                            @Html.DisplayFor(model => model.Step6)
+                            <div>
+
+                                <img style="width:500px; height:500px;" src="@Html.DisplayFor(model => model.Recipe_image6)" alt="Alternate Text" />
+
+
+
+                            </div>
+
+                        </li>
+
+
+                    </ul>
+
+                    </div>
+                       </div>
+
+                   </div>
+               </div>                                                       <div class="container border2">
+                                                                                    <div class="row mt-5">
+
+                                                                                        <div class="col-sm-9 border">
+                                                                                            <div class="post-photo">
+                                                                                                <h3 id="hinhthuchanh" style="color:#e55066">Hình thực hành</h3>
+                                                                                                <p>Cùng chia sẻ thành phẩm đến cộng đồng</p>
+
+                                                                                            </div>
+                                                                                            <div class="mt-5">
+                                                                                                <div class="col-sm-4 ">
+
+                                                                                                    <center><b>Được đăng bởi:</b><p class="b12">@UserManager.GetUserName(User)</p>  </center>
+                                                                                                    <div class="image-wrapper1">
+                                                                                                        <img class="border-image" style="width:250px;height:250px; padding:10px; float:left" src="@Html.DisplayFor(model => model.Image_Practice)" />
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="col-sm-4 ">
+
+                                                                                                    <center><b>Được đăng bởi:</b><p class="b12"> @UserManager.GetUserName(User)</p> </center>
+                                                                                                    <div class="image-wrapper1">
+                                                                                                        <img class="border-image" style="width:250px;height:250px; padding:10px; float:left" src="@Html.DisplayFor(model => model.Image_Practice2)" />
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-sm-4 ">
+
+                                                                                                    <center><b>Được đăng bởi:</b><p class="b12"> @UserManager.GetUserName(User)</p> </center>
+                                                                                                    <div class="image-wrapper1">
+                                                                                                        <img class="border-image" style="width:250px;height:250px; padding:10px; float:left" src="@Html.DisplayFor(model => model.Image_Practice3)" />
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="center">
+                                                                                                <a style="color: #776a6c" href="#">
+                                                                                                   
+                                                                                                    <img src="~/images/snap-upload.png" />
+                                                                                                    <p>
+                                                                                                        Bạn đã từng nấu món này chưa!
+
+                                                                                                    </p>
+                                                                                                    <p> Hãy chia sẻ hình ảnh và cách làm của bạn với nhé!</p>
+                                                                                                </a>
+                                                                                                <button class="btn btn-add-photo ng-isolate-scope"  recipe-social-cooked-popup="" option-recipe-id="17521">
+                                                                                                    <i class="ico ico-18 ico-iblock ico-photos ico-black"></i> Tải lên hình thực hiện
+                                                                                                    
+                                                                                                </button>
+                                                                                            </div>
+
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                    <div class="row mt-5">
+                                                                                        <div class="col-sm-9 border">
+
+                                                                                            <div class="inline-recipe-review-form simple-review-form with-fake-input micro-box">
+                                                                                                <h3 id="binhluan" class="title">Bình luận</h3>
+
+                                                                                                <div class="input-group simple-input fake-form">
+                                                                                                    <span class="fa fa-pencil fa-ico"></span>
+                                                                                                    <input type = "text" placeholder="Nội dung thảo luận..." name="temp-review-content" id="temp-review-content" class="form-control simple-form-control">
+                                                                                                    <span class="input-group-btn">
+                                                                                                        <button class="btn btn-danger">Gửi bình luận</button>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                    </div>
+
+
+
+
+                                @*<div>
+
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Image)
+                        </dt>
+                        <dd>
+                           <img src="@Html.DisplayFor(model => model.Image)" />
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Resources)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Resources)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Recipe)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Recipe)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.role)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.role)
+                        </dd>
+                    </dl>
+                </div>*@
+
+                        <div class="mt-3">
+                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success" role="button">Edit</a>
+                            <a asp-action="Index" class="btn btn-primary">Back to List</a>
+                        </div>

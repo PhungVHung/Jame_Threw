@@ -1,0 +1,188 @@
+﻿@model J4.Models.Recipes
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Recipes</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Image_Food" class="control-label"></label>
+                <input asp-for="Image_Food" class="form-control" />
+                <span asp-validation-for="Image_Food" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Name_Food" class="control-label"></label>
+                <input asp-for="Name_Food" class="form-control" />
+                <span asp-validation-for="Name_Food" class="text-danger"></span>
+            </div>
+            <h2 style="color:red;"><b>Resources prepare</b></h2>
+            <div class="form-group">
+                <label asp-for="Resources_prepare" class="form-label"></label>
+                <textarea asp-for="Resources_prepare" class="form-control" id="" cols="15" rows="5"></textarea>
+                <span asp-validation-for="Resources_prepare" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Resources1" class="form-label"></label>
+                <textarea asp-for="Resources1" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Resources1" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Resources2" class="form-label"></label>
+                <textarea asp-for="Resources2" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Resources2" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Resources3" class="form-label"></label>
+                <textarea asp-for="Resources3" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Resources3" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Resources4" class="form-label"></label>
+                <textarea asp-for="Resources4" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Resources4" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Resources5" class="form-label"></label>
+                <textarea asp-for="Resources5" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Resources5" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Resources6" class="form-label"></label>
+                <textarea asp-for="Resources6" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Resources6" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Resources7" class="form-label"></label>
+                <textarea asp-for="Resources7" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Resources7" class="text-danger"></span>
+
+            </div>
+            @*<div class="form-group">
+            <label asp-for="Resources" class="control-label"></label>
+            <input asp-for="Resources" class="form-control" />
+            <span asp-validation-for="Resources" class="text-danger"></span>
+        </div>*@
+            @*<div class="form-group">
+            <label asp-for="Recipe" class="control-label"></label>
+            <input asp-for="Recipe" class="form-control" />
+            <span asp-validation-for="Recipe" class="text-danger"></span>
+        </div>*@
+            <h2 style="color:red"><b> Recipe</b> </h2>
+            <div class="form-group">
+                <label asp-for="Step1" class="form-label"></label>
+                <textarea asp-for="Step1" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Step1" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe_image1" class="control-label"></label>
+                <input asp-for="Recipe_image1" class="form-control" />
+                <span asp-validation-for="Recipe_image1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Step2" class="form-label"></label>
+                <textarea asp-for="Step2" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Step2" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe_image2" class="control-label"></label>
+                <input asp-for="Recipe_image2" class="form-control" />
+                <span asp-validation-for="Recipe_image2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Step3" class="form-label"></label>
+                <textarea asp-for="Step3" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Step3" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe_image3" class="control-label"></label>
+                <input asp-for="Recipe_image3" class="form-control" />
+                <span asp-validation-for="Recipe_image3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Step4" class="form-label"></label>
+                <textarea asp-for="Step4" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Step4" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe_image4" class="control-label"></label>
+                <input asp-for="Recipe_image4" class="form-control" />
+                <span asp-validation-for="Recipe_image4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Step5" class="form-label"></label>
+                <textarea asp-for="Step5" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Step5" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe_image5" class="control-label"></label>
+                <input asp-for="Recipe_image5" class="form-control" />
+                <span asp-validation-for="Recipe_image5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Step6" class="form-label"></label>
+                <textarea asp-for="Step6" class="form-control" id="" cols="15" rows="3"></textarea>
+                <span asp-validation-for="Step6" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe_image6" class="control-label"></label>
+                <input asp-for="Recipe_image6" class="form-control" />
+                <span asp-validation-for="Recipe_image6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="role" class="control-label"></label>
+                <select asp-for="role" class="form-control">
+                    <option>0</option>
+                    <option>1</option>
+                </select>
+                <span asp-validation-for="role" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image_Practice" class="control-label"></label>
+                <input asp-for="Image_Practice" class="form-control" />
+                <span asp-validation-for="Image_Practice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image_Practice2" class="control-label"></label>
+                <input asp-for="Image_Practice2" class="form-control" />
+                <span asp-validation-for="Image_Practice2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image_Practice3" class="control-label"></label>
+                <input asp-for="Image_Practice3" class="form-control" />
+                <span asp-validation-for="Image_Practice3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index"  class="btn btn-primary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

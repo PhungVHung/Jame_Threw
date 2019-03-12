@@ -1,0 +1,177 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand img">
+                <img width="50" height="50" src="~/images/photo.png" alt="Alternate Text" />
+            </a>
+        </div>
+        <div class="navbar-collapse collapse mt-4">
+            <ul class="nav navbar-nav">
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="Recipes" asp-action="Index">Recipes</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contests">Contests</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Announcements">Announcements</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Feedback">Feedback</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ's</a></li>
+
+            </ul>
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+<div class="faq-header"><center>Frequently Asked Questions</center></div>
+<div class="faq-content">
+    <div class="faq-question">
+        <input id="q1" type="checkbox" class="panel">
+        <div class="plus">+</div>
+        <label for="q1" class="panel-title">How to become the member of this site?</label>
+        <div class="panel-content">Select information entry register and complete.</div>
+    </div>
+    <div class="faq-question">
+        <input id="q2" type="checkbox" class="panel">
+        <div class="plus">+</div>
+        <label for="q2" class="panel-title">Will there be any subscription charges?</label>
+        <div class="panel-content">
+            There are two types of recipes that are free and paid, if you want to see the full you have to pay with the following fees:<br />
+            <i class='fas fa-caret-right'> Monthly Subscription – 10$</i><br />
+            <i class='fas fa-caret-right'> Yearly Subscription – 100$</i>
+        </div>
+    </div>
+    <div class="faq-question">
+        <input id="q3" type="checkbox" class="panel">
+        <div class="plus">+</div>
+        <label for="q3" class="panel-title">How to view the recipes and tips? Will there be any charges for that?</label>
+        <div class="panel-content">
+            There are two types:<br />
+            <i class='fas fa-caret-right'> Free recipe is that you can see recipes and free tips.</i><br />
+            <i class='fas fa-caret-right'> The paid formula is if you want to see all the recipes and tips, you have to pay a fee in a month or a year (the cost is in the second section).</i>
+        </div>
+    </div>
+    <div class="faq-question">
+        <input id="q4" type="checkbox" class="panel">
+        <div class="plus">+</div>
+        <label for="q4" class="panel-title">I am not the registered member of the site. Can I participate in the contest held?</label>
+        <div class="panel-content">Yes, you need to register to be able to participate in the contest (register see section 1)</div>
+    </div>
+    <div class="faq-question">
+        <input id="q5" type="checkbox" class="panel">
+        <div class="plus">+</div>
+        <label for="q5" class="panel-title">How to upload or post the recipes and tips?</label>
+        <div class="panel-content">
+            FUNCTIONS REQUEST VIP MEMBERS (see section 1). On the menu bar choose to download recipes and tips
+        </div>
+    </div>
+    <div class="faq-question">
+        <input id="q6" type="checkbox" class="panel">
+        <div class="plus">+</div>
+        <label for="q6" class="panel-title">How to post a feedback?</label>
+        <div class="panel-content">
+            On the menu bar click on feedback and fill in the information
+        </div>
+    </div>
+    <div class="faq-question">
+        <input id="q7" type="checkbox" class="panel">
+        <div class="plus">+</div>
+        <label for="q7" class="panel-title">I have posted a recipe or a tip with respect to the contest. How can I know who is the winner?</label>
+        <div class="panel-content">
+            When the results are available we will send you a notification in the notification section
+        </div>
+    </div>
+</div>
+<style type="text/css">
+
+
+
+    body {
+        color: #333;
+        background: #fcfcfc;
+        font-family: 'Raleway', sans-serif;
+        overflow-x: hidden;
+    }
+
+    .faq-header {
+        font-size: 42px;
+        border-bottom: 1px dotted #ccc;
+        padding: 24px;
+    }
+
+    .faq-content {
+        margin: 0 auto;
+    }
+
+    .faq-question {
+        padding: 20px 0;
+        border-bottom: 1px dotted #ccc;
+    }
+
+    .panel-title {
+        font-size: 24px;
+        width: 100%;
+        position: relative;
+        margin: 0;
+        padding: 10px 10px 0 48px;
+        display: block;
+        cursor: pointer;
+    }
+
+    .panel-content {
+        font-size: 20px;
+        padding: 0px 14px;
+        margin: 0 40px;
+        height: 0;
+        overflow: hidden;
+        z-index: -1;
+        position: relative;
+        opacity: 0;
+        -webkit-transition: .4s ease;
+        -moz-transition: .4s ease;
+        -o-transition: .4s ease;
+        transition: .4s ease;
+    }
+
+    .panel:checked ~ .panel-content {
+        height: auto;
+        opacity: 1;
+        padding: 14px;
+    }
+
+    .plus {
+        position: absolute;
+        margin-left: 20px;
+        margin-top: 4px;
+        z-index: 5;
+        font-size: 42px;
+        line-height: 100%;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        -webkit-transition: .2s ease;
+        -moz-transition: .2s ease;
+        -o-transition: .2s ease;
+        transition: .2s ease;
+    }
+
+    .panel:checked ~ .plus {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .panel {
+        display: none;
+    }
+</style>

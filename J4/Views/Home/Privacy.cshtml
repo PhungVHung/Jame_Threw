@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h2>@ViewData["Title"]</h2>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand img">
+                <img width="50" height="50" src="~/images/photo.png" alt="Alternate Text" />
+            </a>
+        </div>
+        <div class="navbar-collapse collapse mt-4">
+            <ul class="nav navbar-nav">
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="Recipes" asp-action="Index">Recipes</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contests">Contests</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Announcements">Announcements</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Feedback">Feedback</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ's</a></li>
+
+            </ul>
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>

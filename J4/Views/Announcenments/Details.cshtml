@@ -1,0 +1,36 @@
+﻿@model J4.Models.Announcenment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Announcenment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tittle_announ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tittle_announ)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Describle_announ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Describle_announ)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_announ)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image_announ)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id_announ">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

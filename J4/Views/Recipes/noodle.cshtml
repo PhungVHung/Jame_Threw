@@ -1,0 +1,156 @@
+﻿@model IEnumerable<J4.Models.Recipes>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand img">
+                <img width="50" height="50" src="~/images/photo.png" alt="Alternate Text" />
+            </a>
+        </div>
+        <div class="navbar-collapse collapse mt-4">
+            <ul class="nav navbar-nav">
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="Recipes" asp-action="Index">Recipes</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contests">Contests</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Announcements">Announcements</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Feedback">Feedback</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ's</a></li>
+
+            </ul>
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+<center><h1 class="recipes-h1"> Recipes </h1></center>
+<div class="container">
+    <a class="btn btn-success" href="Recipes/Create">Create a Food</a>
+
+</div>
+<style>
+    .button-recipes {
+        margin-right: 5px;
+        padding: 8px 18px;
+    }
+
+    .recipes-h1 {
+        color: crimson;
+    }
+
+    .image-wrappe3r {
+        margin: 0 auto;
+        width: 300px;
+        overflow: hidden;
+    }
+
+    .image-wrapper3 img {
+        max-width: 100%;
+        transition: transform 1s ease-in-out;
+    }
+
+    .image-wrapper3:hover img {
+        transform: scale(1.4);
+    }
+</style>
+<div class="mt-4">
+
+    @foreach (var item in Model)
+    {
+        <div class="Recipe-Row">
+
+            <div class="Box">
+                <div class="item-img image-wrapper3">
+                    <a class="photo" href="https://localhost:44311/Recipes/Details/ @item.Id">
+
+                        <img width="300" height="250" src="@Html.DisplayFor(modelItem => item.Image_Food)" />
+
+                    </a>
+                </div>
+                <div class="item-info">
+                    <div class="Name">
+                        <h4> @Html.DisplayFor(modelItem => item.Name_Food)</h4>
+                    </div>
+                    <div class="Role">
+                        <h4 style="color:red"> @Html.DisplayFor(modelItem => item.role)</h4>
+                    </div>
+                </div>
+                <div class="Status button-recipes ">
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a asp-action="Details" asp-route-id="@item.Id">Delete</a>*@
+
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success" role="button">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info" role="button">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" role="button">Delete</a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    }
+</div>
+
+@*<h2>Index</h2>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Resources)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Recipe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.role)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Resources)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recipe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.role)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@

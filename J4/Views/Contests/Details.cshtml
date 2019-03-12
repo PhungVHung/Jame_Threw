@@ -1,0 +1,48 @@
+﻿@model J4.Models.Contest
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_contest)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name_contest)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Img_contest)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Img_contest)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Link)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Describle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Describle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateBy)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id_contest">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
